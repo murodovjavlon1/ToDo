@@ -4,11 +4,16 @@ import 'package:intl/intl.dart';
 
 class Sana extends StatefulWidget {
   final void Function(BuildContext) sananiTanlash;
+
   final DateTime belgilanganKun;
+  final void Function() oldingiSana;
+  final void Function() kiyingiSana;
   const Sana({
     super.key,
     required this.sananiTanlash,
     required this.belgilanganKun,
+    required this.oldingiSana,
+    required this.kiyingiSana,
   });
 
   @override
@@ -22,7 +27,7 @@ class _SanaState extends State<Sana> {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: <Widget>[
         IconButton(
-          onPressed: () {},
+          onPressed: widget.oldingiSana,
           icon: const Icon(
             Icons.arrow_left,
             size: 35,
@@ -39,7 +44,8 @@ class _SanaState extends State<Sana> {
               ),
               children: [
                 TextSpan(
-                  text: DateFormat('d MMM y').format(widget.belgilanganKun),
+                  text:
+                      DateFormat(' EEEE d  MMM ').format(widget.belgilanganKun),
                   style: const TextStyle(
                     color: Colors.black,
                     fontSize: 20,
@@ -51,7 +57,7 @@ class _SanaState extends State<Sana> {
           ),
         ),
         IconButton(
-          onPressed: () {},
+          onPressed: widget.kiyingiSana,
           icon: const Icon(
             Icons.arrow_right,
             size: 35,
@@ -60,8 +66,7 @@ class _SanaState extends State<Sana> {
       ],
     );
   }
-} 
-
+}
 
 class Two extends StatelessWidget {
   const Two({

@@ -1,37 +1,21 @@
+import 'package:algaortim/home/reja.dart';
+import 'package:algaortim/models/reja_model.dart';
 import 'package:flutter/material.dart';
 
 class RejalarRuyxati extends StatelessWidget {
+  final List<RejaModel> plan;
+
   const RejalarRuyxati({
-    super.key,
+    super.key, required this.plan,
   });
 
   @override
   Widget build(BuildContext context) {
     return Expanded(
       child: ListView.builder(
-        itemCount: 10,
+        itemCount: plan.length,
         itemBuilder: (context, index) {
-          return ListTile(
-            contentPadding: const EdgeInsets.symmetric(horizontal: 8),
-            trailing: IconButton(
-              onPressed: () {},
-              icon: const Icon(Icons.delete),
-            ),
-            leading: IconButton(
-              onPressed: () {},
-              icon: const Icon(
-                Icons.circle_outlined,
-                size: 18,
-              ),
-            ),
-            title: const Text(
-              "Bajariladigan Rejalar",
-              style: TextStyle(
-                fontSize: 14,
-                fontWeight: FontWeight.w600,
-              ),
-            ),
-          );
+          return  Reja(plan[index]);
         },
       ),
     );

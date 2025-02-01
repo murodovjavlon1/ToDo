@@ -1,5 +1,6 @@
 import 'package:algaortim/home/rejalar_ruyxati.dart';
 import 'package:algaortim/home/sana.dart';
+import 'package:algaortim/models/reja_model.dart';
 import 'package:flutter/material.dart';
 
 class Rejalar extends StatefulWidget {
@@ -10,6 +11,8 @@ class Rejalar extends StatefulWidget {
 }
 
 class _RejalarState extends State<Rejalar> {
+  List<RejaModel> rejalar = RejalarR().ruyxat;
+
   DateTime belgilanganKun = DateTime.now();
   void sananiTanlash(BuildContext context) {
     showDatePicker(
@@ -27,8 +30,29 @@ class _RejalarState extends State<Rejalar> {
         });
   }
 
+  void oldingiSana() {
+    setState(() {
+      belgilanganKun = DateTime(
+        belgilanganKun.year,
+        belgilanganKun.month,
+        belgilanganKun.day - 1,
+      );
+    });
+  }
+
+  void kiyingiSana() {
+    setState(() {
+      belgilanganKun = DateTime(
+        belgilanganKun.year,
+        belgilanganKun.month,
+        belgilanganKun.day + 1,
+      );
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
+    print(rejalar[0].nomi);
     return Scaffold(
       appBar: AppBar(
         title: const Text("data"),
@@ -45,9 +69,11 @@ class _RejalarState extends State<Rejalar> {
           Sana(
             belgilanganKun: belgilanganKun,
             sananiTanlash: sananiTanlash,
+            oldingiSana: oldingiSana,
+            kiyingiSana: kiyingiSana,
           ),
           const Two(),
-          const RejalarRuyxati(),
+           RejalarRuyxati(plan: rejalar),
         ],
       ),
     );
