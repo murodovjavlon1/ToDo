@@ -11,57 +11,64 @@ class Rejalar extends StatefulWidget {
 }
 
 class _RejalarState extends State<Rejalar> {
-  List<RejaModel> rejalar = RejalarR().ruyxat;
+  final List<RejaModel> _rejalar = RejalarR().ruyxat;
 
-  DateTime belgilanganKun = DateTime.now();
-  void sananiTanlash(BuildContext context) {
+  DateTime _belgilanganKun = DateTime.now();
+  void _sananiTanlash(BuildContext context) {
     showDatePicker(
       context: context,
       initialDate: DateTime.now(),
       firstDate: DateTime(2024),
       lastDate: DateTime(2030),
+      // ignore: non_constant_identifier_names
     ).then((TanlanganSana) => {
           if (TanlanganSana != null)
             {
               setState(() {
-                belgilanganKun = TanlanganSana;
+                _belgilanganKun = TanlanganSana;
               })
             }
         });
   }
 
-  void oldingiSana() {
+  void _oldingiSana() {
     setState(() {
-      belgilanganKun = DateTime(
-        belgilanganKun.year,
-        belgilanganKun.month,
-        belgilanganKun.day - 1,
+      _belgilanganKun = DateTime(
+        _belgilanganKun.year,
+        _belgilanganKun.month,
+        _belgilanganKun.day - 1,
       );
     });
   }
 
-  void kiyingiSana() {
+  void _kiyingiSana() {
     setState(() {
-      belgilanganKun = DateTime(
-        belgilanganKun.year,
-        belgilanganKun.month,
-        belgilanganKun.day + 1,
+      _belgilanganKun = DateTime(
+        _belgilanganKun.year,
+        _belgilanganKun.month,
+        _belgilanganKun.day + 1,
       );
     });
   }
 
-  void bajarilganDebBelgila(String rejaId) {
+  void _bajarilganDebBelgila(String rejaId) {
     setState(() {
-       rejalar.firstWhere((reja) => reja.id == rejaId).bajarildiniUzgartirish();
+      _rejalar.firstWhere((reja) => reja.id == rejaId).bajarildiniUzgartirish();
+    });
+  }
+
+  void _rejaniUchrish(String rejaId) {
+    setState(() {
+      _rejalar.removeWhere((reja) => reja.id == rejaId);
     });
   }
 
   @override
   Widget build(BuildContext context) {
-   
+    print(_rejalar.length);
     return Scaffold(
       appBar: AppBar(
-        title: const Text("data"),
+        title: const Text("ToDo"),
         backgroundColor: Colors.amber,
         centerTitle: true,
       ),
@@ -73,15 +80,16 @@ class _RejalarState extends State<Rejalar> {
       body: Column(
         children: <Widget>[
           Sana(
-            belgilanganKun: belgilanganKun,
-            sananiTanlash: sananiTanlash,
-            oldingiSana: oldingiSana,
-            kiyingiSana: kiyingiSana,
+            belgilanganKun: _belgilanganKun,
+            sananiTanlash: _sananiTanlash,
+            oldingiSana: _oldingiSana,
+            kiyingiSana: _kiyingiSana,
           ),
-          const Two(),
+          Two(rejalar: _rejalar),
           RejalarRuyxati(
-            plan: rejalar,
-            bajarilganDebBelgila: bajarilganDebBelgila,
+            plan: _rejalar,
+            bajarilganDebBelgila: _bajarilganDebBelgila,
+            rejaniUchrish: _rejaniUchrish,
           ),
         ],
       ),

@@ -1,3 +1,4 @@
+import 'package:algaortim/models/reja_model.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
@@ -69,13 +70,16 @@ class _SanaState extends State<Sana> {
 }
 
 class Two extends StatelessWidget {
+  final List<RejaModel> rejalar;
   const Two({
     super.key,
+    required this.rejalar,
   });
 
   @override
   Widget build(BuildContext context) {
-    return const Padding(
+    print(rejalar);
+    return Padding(
       padding: EdgeInsets.all(20),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -84,7 +88,7 @@ class Two extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               Text(
-                "03",
+                "${rejalar.length}",
                 style: TextStyle(fontWeight: FontWeight.w600),
               ),
               Text(
@@ -97,7 +101,7 @@ class Two extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.end,
             children: <Widget>[
               Text(
-                "0",
+                "${rejalar.where((reja) => reja.bajarildi).length}",
                 style: TextStyle(fontWeight: FontWeight.w600),
               ),
               Text(

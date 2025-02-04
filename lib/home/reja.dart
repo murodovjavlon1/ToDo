@@ -4,10 +4,12 @@ import 'package:flutter/material.dart';
 class Reja extends StatelessWidget {
   final RejaModel reja;
   final Function bajarilganDebBelgila;
+  final Function rejaniUchrish;
 
   const Reja(
     this.reja,
     this.bajarilganDebBelgila,
+    this.rejaniUchrish,
   );
 
   @override
@@ -15,7 +17,9 @@ class Reja extends StatelessWidget {
     return ListTile(
       contentPadding: const EdgeInsets.symmetric(horizontal: 8),
       trailing: IconButton(
-        onPressed: () {},
+        onPressed: () {
+          rejaniUchrish(reja.id);
+        },
         icon: const Icon(Icons.delete),
       ),
       leading: IconButton(
