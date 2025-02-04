@@ -78,7 +78,6 @@ class Two extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print(rejalar);
     return Padding(
       padding: EdgeInsets.all(20),
       child: Row(
@@ -89,9 +88,9 @@ class Two extends StatelessWidget {
             children: <Widget>[
               Text(
                 "${rejalar.length}",
-                style: TextStyle(fontWeight: FontWeight.w600),
+                style: const TextStyle(fontWeight: FontWeight.w600),
               ),
-              Text(
+              const Text(
                 "Barcha rejalaringiz",
                 style: TextStyle(fontSize: 12, color: Colors.black54),
               ),
@@ -104,7 +103,7 @@ class Two extends StatelessWidget {
                 "${rejalar.where((reja) => reja.bajarildi).length}",
                 style: TextStyle(fontWeight: FontWeight.w600),
               ),
-              Text(
+              const Text(
                 "Bajarilgan  rejalaringiz",
                 style: TextStyle(fontSize: 12, color: Colors.black54),
               ),

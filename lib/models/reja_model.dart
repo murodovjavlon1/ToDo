@@ -23,12 +23,7 @@ class RejalarR {
     RejaModel(nomi: "uynash  ", kuni: DateTime.now(), id: "n3"),
     RejaModel(nomi: "borish  ", kuni: DateTime.now(), id: "n4"),
     RejaModel(nomi: "borish  ", kuni: DateTime.now(), id: "n5"),
-    RejaModel(nomi: "borish  ", kuni: DateTime.now(), id: "n6"),
-    RejaModel(nomi: "borish  ", kuni: DateTime.now(), id: "n7"),
-    RejaModel(nomi: "borish  ", kuni: DateTime.now(), id: "n8"),
-    RejaModel(nomi: "borish  ", kuni: DateTime.now(), id: "n9"),
-    RejaModel(nomi: "borish  ", kuni: DateTime.now(), id: "n10"),
-    RejaModel(nomi: "borish  ", kuni: DateTime.now(), id: "n11"),
+    
   ];
   List<RejaModel> get ruyxat {
     return _ruyxat;

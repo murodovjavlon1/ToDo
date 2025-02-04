@@ -63,9 +63,69 @@ class _RejalarState extends State<Rejalar> {
     });
   }
 
+  void _rejaQushishEkraniniOchish(BuildContext context) {
+    showModalBottomSheet(
+      context: context,
+      builder: (context) {
+        return Container(
+          padding: EdgeInsets.symmetric(horizontal: 20),
+          width: double.infinity,
+          child: Column(
+            children: <Widget>[
+              TextField(
+                decoration: InputDecoration(
+                  labelText: "Reja nomi",
+                ),
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  Text("Reja Kun Tanlanmagan..."),
+                  TextButton(
+                    onPressed: () {},
+                    child: Text("KUNNI TANLASH"),
+                  )
+                ],
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: <Widget>[
+                  TextButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    child: Text(
+                      "BEKOR QILISH",
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                  TextButton(
+                    onPressed: () {},
+                    child: Text(
+                      "KRITISH",
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 15,
+                          fontWeight: FontWeight.bold),
+                    ),
+                    style: TextButton.styleFrom(
+                      backgroundColor: Colors.blue,
+                    ),
+                  ),
+                ],
+              )
+            ],
+          ),
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
-    print(_rejalar.length);
     return Scaffold(
       appBar: AppBar(
         title: const Text("ToDo"),
@@ -75,7 +135,9 @@ class _RejalarState extends State<Rejalar> {
       floatingActionButton: FloatingActionButton(
         backgroundColor: Colors.amber,
         child: const Icon(Icons.add),
-        onPressed: () {},
+        onPressed: () {
+          _rejaQushishEkraniniOchish(context);
+        },
       ),
       body: Column(
         children: <Widget>[
