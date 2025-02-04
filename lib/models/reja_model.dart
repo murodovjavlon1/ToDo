@@ -17,7 +17,7 @@ class RejaModel {
 
 class RejalarR {
   // _ private | shaxsiy
-  List<RejaModel> _ruyxat = [
+  final List<RejaModel> _ruyxat = [
     RejaModel(nomi: "Bozorga borish ", kuni: DateTime.now(), id: "n1"),
     RejaModel(nomi: "Ishlash ", kuni: DateTime.now(), id: "n2"),
     RejaModel(nomi: "uynash  ", kuni: DateTime.now(), id: "n3"),

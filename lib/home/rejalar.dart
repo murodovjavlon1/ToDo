@@ -50,9 +50,15 @@ class _RejalarState extends State<Rejalar> {
     });
   }
 
+  void bajarilganDebBelgila(String rejaId) {
+    setState(() {
+       rejalar.firstWhere((reja) => reja.id == rejaId).bajarildiniUzgartirish();
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    print(rejalar[0].nomi);
+   
     return Scaffold(
       appBar: AppBar(
         title: const Text("data"),
@@ -73,7 +79,10 @@ class _RejalarState extends State<Rejalar> {
             kiyingiSana: kiyingiSana,
           ),
           const Two(),
-           RejalarRuyxati(plan: rejalar),
+          RejalarRuyxati(
+            plan: rejalar,
+            bajarilganDebBelgila: bajarilganDebBelgila,
+          ),
         ],
       ),
     );

@@ -3,7 +3,12 @@ import 'package:flutter/material.dart';
 
 class Reja extends StatelessWidget {
   final RejaModel reja;
-  const Reja(this.reja);
+  final Function bajarilganDebBelgila;
+
+  const Reja(
+    this.reja,
+    this.bajarilganDebBelgila,
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -14,18 +19,24 @@ class Reja extends StatelessWidget {
         icon: const Icon(Icons.delete),
       ),
       leading: IconButton(
-        onPressed: () {},
-        icon: const Icon(
-          Icons.circle_outlined,
+        onPressed: () {
+          bajarilganDebBelgila(reja.id);
+        },
+        icon: Icon(
+          reja.bajarildi ? Icons.check_circle_outline : Icons.circle_outlined,
+          color: reja.bajarildi ? Colors.green : Colors.grey,
           size: 18,
         ),
       ),
-      title:  Text(
+      title: Text(
         reja.nomi,
         style: TextStyle(
-          fontSize: 14,
-          fontWeight: FontWeight.w600,
-        ),
+            fontSize: 14,
+            fontWeight: FontWeight.w600,
+            decoration: reja.bajarildi
+                ? TextDecoration.lineThrough
+                : TextDecoration.none,
+            color: reja.bajarildi ? Colors.grey : Colors.black),
       ),
     );
   }

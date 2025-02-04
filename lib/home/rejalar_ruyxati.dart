@@ -4,9 +4,12 @@ import 'package:flutter/material.dart';
 
 class RejalarRuyxati extends StatelessWidget {
   final List<RejaModel> plan;
+  final Function bajarilganDebBelgila;
 
   const RejalarRuyxati({
-    super.key, required this.plan,
+    super.key,
+    required this.plan,
+    required this.bajarilganDebBelgila,
   });
 
   @override
@@ -15,7 +18,7 @@ class RejalarRuyxati extends StatelessWidget {
       child: ListView.builder(
         itemCount: plan.length,
         itemBuilder: (context, index) {
-          return  Reja(plan[index]);
+          return Reja(plan[index], bajarilganDebBelgila);
         },
       ),
     );
