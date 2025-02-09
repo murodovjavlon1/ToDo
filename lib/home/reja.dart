@@ -9,7 +9,7 @@ class Reja extends StatelessWidget {
   const Reja(
     this.reja,
     this.bajarilganDebBelgila,
-    this.rejaniUchrish,
+    this.rejaniUchrish, {super.key}
   );
 
   @override

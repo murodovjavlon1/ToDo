@@ -6,12 +6,14 @@ class RejalarRuyxati extends StatelessWidget {
   final List<RejaModel> plan;
   final Function bajarilganDebBelgila;
   final Function rejaniUchrish;
+  final Function sananiTanlash;
 
   const RejalarRuyxati({
     super.key,
     required this.plan,
     required this.bajarilganDebBelgila,
     required this.rejaniUchrish,
+    required this.sananiTanlash,
   });
 
   @override
@@ -20,7 +22,11 @@ class RejalarRuyxati extends StatelessWidget {
       child: ListView.builder(
         itemCount: plan.length,
         itemBuilder: (context, index) {
-          return Reja(plan[index], bajarilganDebBelgila, rejaniUchrish,);
+          return Reja(
+            plan[index],
+            bajarilganDebBelgila,
+            rejaniUchrish,
+          );
         },
       ),
     );

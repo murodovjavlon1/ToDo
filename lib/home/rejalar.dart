@@ -1,5 +1,6 @@
 import 'package:algaortim/home/rejalar_ruyxati.dart';
 import 'package:algaortim/home/sana.dart';
+import 'package:algaortim/home/yangi_reja.dart';
 import 'package:algaortim/models/reja_model.dart';
 import 'package:flutter/material.dart';
 
@@ -11,10 +12,11 @@ class Rejalar extends StatefulWidget {
 }
 
 class _RejalarState extends State<Rejalar> {
-  final List<RejaModel> _rejalar = RejalarR().ruyxat;
+  final RejalarR _rejalar = RejalarR();
 
   DateTime _belgilanganKun = DateTime.now();
-  void _sananiTanlash(BuildContext context) {
+
+  void sananiTanlash(BuildContext context) {
     showDatePicker(
       context: context,
       initialDate: DateTime.now(),
@@ -53,13 +55,15 @@ class _RejalarState extends State<Rejalar> {
 
   void _bajarilganDebBelgila(String rejaId) {
     setState(() {
-      _rejalar.firstWhere((reja) => reja.id == rejaId).bajarildiniUzgartirish();
+      _rejalar.ruyxat
+          .firstWhere((reja) => reja.id == rejaId)
+          .bajarildiniUzgartirish();
     });
   }
 
   void _rejaniUchrish(String rejaId) {
     setState(() {
-      _rejalar.removeWhere((reja) => reja.id == rejaId);
+      _rejalar.ruyxat.removeWhere((reja) => reja.id == rejaId);
     });
   }
 
@@ -67,61 +71,18 @@ class _RejalarState extends State<Rejalar> {
     showModalBottomSheet(
       context: context,
       builder: (context) {
-        return Container(
-          padding: EdgeInsets.symmetric(horizontal: 20),
-          width: double.infinity,
-          child: Column(
-            children: <Widget>[
-              TextField(
-                decoration: InputDecoration(
-                  labelText: "Reja nomi",
-                ),
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: <Widget>[
-                  Text("Reja Kun Tanlanmagan..."),
-                  TextButton(
-                    onPressed: () {},
-                    child: Text("KUNNI TANLASH"),
-                  )
-                ],
-              ),
-              SizedBox(
-                height: 20,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: <Widget>[
-                  TextButton(
-                    onPressed: () {
-                      Navigator.pop(context);
-                    },
-                    child: Text(
-                      "BEKOR QILISH",
-                      style: TextStyle(fontWeight: FontWeight.bold),
-                    ),
-                  ),
-                  TextButton(
-                    onPressed: () {},
-                    child: Text(
-                      "KRITISH",
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 15,
-                          fontWeight: FontWeight.bold),
-                    ),
-                    style: TextButton.styleFrom(
-                      backgroundColor: Colors.blue,
-                    ),
-                  ),
-                ],
-              )
-            ],
-          ),
+        return YangiReja(
+          rejaniQushi: _rejaniQushi,
         );
       },
     );
+  }
+
+  void _rejaniQushi(String rejaNomi, DateTime rejaKuni) {
+   
+    setState(() {
+     // _rejalar.addToDo(rejaNomi, rejaKuni);
+    });
   }
 
   @override
@@ -143,13 +104,14 @@ class _RejalarState extends State<Rejalar> {
         children: <Widget>[
           Sana(
             belgilanganKun: _belgilanganKun,
-            sananiTanlash: _sananiTanlash,
+            sananiTanlash: sananiTanlash,
             oldingiSana: _oldingiSana,
             kiyingiSana: _kiyingiSana,
           ),
-          Two(rejalar: _rejalar),
+          Two(rejalar: _rejalar.ruyxat),
           RejalarRuyxati(
-            plan: _rejalar,
+            sananiTanlash: sananiTanlash,
+            plan: _rejalar.ruyxat,
             bajarilganDebBelgila: _bajarilganDebBelgila,
             rejaniUchrish: _rejaniUchrish,
           ),

@@ -6,7 +6,7 @@ import 'package:intl/intl.dart';
 class Sana extends StatefulWidget {
   final void Function(BuildContext) sananiTanlash;
 
-  final DateTime belgilanganKun;
+   final DateTime belgilanganKun;
   final void Function() oldingiSana;
   final void Function() kiyingiSana;
   const Sana({
@@ -79,7 +79,7 @@ class Two extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.all(20),
+      padding: const EdgeInsets.all(20),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
@@ -101,7 +101,7 @@ class Two extends StatelessWidget {
             children: <Widget>[
               Text(
                 "${rejalar.where((reja) => reja.bajarildi).length}",
-                style: TextStyle(fontWeight: FontWeight.w600),
+                style: const TextStyle(fontWeight: FontWeight.w600),
               ),
               const Text(
                 "Bajarilgan  rejalaringiz",

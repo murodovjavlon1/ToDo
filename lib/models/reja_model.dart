@@ -1,7 +1,7 @@
 class RejaModel {
   final String id;
   final String nomi;
-  final DateTime kuni;
+  final String kuni;
   bool bajarildi = false;
 
   RejaModel({
@@ -18,14 +18,27 @@ class RejaModel {
 class RejalarR {
   // _ private | shaxsiy
   final List<RejaModel> _ruyxat = [
-    RejaModel(nomi: "Bozorga borish ", kuni: DateTime.now(), id: "n1"),
-    RejaModel(nomi: "Ishlash ", kuni: DateTime.now(), id: "n2"),
-    RejaModel(nomi: "uynash  ", kuni: DateTime.now(), id: "n3"),
-    RejaModel(nomi: "borish  ", kuni: DateTime.now(), id: "n4"),
-    RejaModel(nomi: "borish  ", kuni: DateTime.now(), id: "n5"),
-    
+    RejaModel(nomi: "Bozorga borish ", id: "n1", kuni: "${DateTime.now()}"),
+    RejaModel(nomi: "Ishlash ", id: "n2", kuni:"${DateTime.now()}"),
+    RejaModel(nomi: "uynash  ", id: "n3", kuni: "${DateTime.now()}"),
   ];
   List<RejaModel> get ruyxat {
     return _ruyxat;
   }
+
+  void addToDo(String rejaNomi, String rejaKuni) {
+    _ruyxat.add(RejaModel(
+        nomi: rejaNomi, kuni: rejaKuni, id: "r${_ruyxat.length + 1}"));
+  }
+
+  // void addTodo(
+  //   String rejaKun,
+  //   String rejaNomi,
+  // ) {
+  //   _ruyxat.add(RejaModel(
+  //     nomi: rejaNomi,
+  //     kuni: DateTime.now(),
+  //     id: "r${_ruyxat.length + 1}",
+  //   ));
+  // }
 }
